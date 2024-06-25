@@ -73,7 +73,7 @@ Configure the MySQL database settings in the application.properties file located
 We welcome contributions to enhance the functionality and performance of the E-Learning Application. Please fork the repository and create a pull request with your changes.
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Ajinvarughese/e-learning/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Ajinvarughese/e-learning/blob/master/LICENSE) file for details.
 
 ## 📬 Contact
 For any inquiries or feedback, please contact ajinvarughese91@gmail.com.
