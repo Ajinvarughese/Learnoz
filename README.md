@@ -1,6 +1,6 @@
 # 📖 E-Learning Web Application
 
-The E-Learning Application is a dynamic web platform designed to facilitate seamless online education, offering a range of courses and learning materials to users. Developed using Java Spring Boot, the application integrates essential features to empower educators and learners in a comprehensive and interactive learning environment.
+The **Learnoz**, E-Learning Application is a dynamic web platform designed to facilitate seamless online education, offering a range of courses and learning materials to users. Developed using Java Spring Boot, the application integrates essential features to empower educators and learners in a comprehensive and interactive learning environment.
 
 ## ✨ Key Features and Functionalities
 
@@ -73,7 +73,7 @@ Configure the MySQL database settings in the application.properties file located
 We welcome contributions to enhance the functionality and performance of the E-Learning Application. Please fork the repository and create a pull request with your changes.
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Ajinvarughese/e-learning/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Ajinvarughese/Learnoz/blob/master/LICENSE) file for details.
 
 ## 📬 Contact
 For any inquiries or feedback, please contact ajinvarughese91@gmail.com.
