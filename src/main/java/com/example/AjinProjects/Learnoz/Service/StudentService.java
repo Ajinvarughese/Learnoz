@@ -41,7 +41,7 @@ public class StudentService {
                 throw new IllegalStateException("User not found!");
             }
         }else {
-            throw new IllegalStateException("Bad JSON");
+            throw new IllegalStateException("Bad json request!");
         }
     }
 }
