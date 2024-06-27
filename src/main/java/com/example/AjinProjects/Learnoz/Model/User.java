@@ -8,10 +8,6 @@ import jakarta.persistence.Id;
 import java.util.Date;
 
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
     private String firstName;
     private String sureName;
     private String email;
@@ -33,14 +29,6 @@ public class User {
     }
 
     public User() {}
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
 
     public String getFirstName() {
         return firstName;
