@@ -5,10 +5,11 @@ import com.example.AjinProjects.Learnoz.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/eLearning/Student")
+@RequestMapping("api/eLearning/student")
 public class StudentController {
 
     private final StudentService service;
@@ -18,9 +19,14 @@ public class StudentController {
         this.service = service;
     }
 
+//    @GetMapping("/{username}")
+//    public Optional<Student> findStudent(@PathVariable String username, @PathVariable String password) {
+//        return service.findStudent(username, password);
+//    }
+
     @GetMapping("/{username}")
-    public Optional<Student> findStudent(@PathVariable String username, @PathVariable String password) {
-        return service.findStudent(username, password);
+    public Optional<Student> allStud(@PathVariable String username) {
+        return service.showAll(username);
     }
 
     @PostMapping("/signup")

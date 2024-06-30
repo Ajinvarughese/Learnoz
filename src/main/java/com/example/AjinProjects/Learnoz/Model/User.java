@@ -1,12 +1,10 @@
 package com.example.AjinProjects.Learnoz.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
+@MappedSuperclass
 public class User {
     private String firstName;
     private String sureName;

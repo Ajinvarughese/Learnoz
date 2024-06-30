@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/eLearning/Tutor")
+@RequestMapping("api/eLearning/tutor")
 public class TutorController {
     private final TutorService service;
     @Autowired

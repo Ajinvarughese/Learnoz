@@ -1,6 +1,6 @@
 package com.example.AjinProjects.Learnoz.Service;
 
-import com.example.AjinProjects.Learnoz.Model.Student;;
+import com.example.AjinProjects.Learnoz.Model.Student;
 import com.example.AjinProjects.Learnoz.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,9 @@ public class StudentService {
         return repository.findStudentByUsername(username, password);
     }
 
+    public Optional<Student> showAll(String username) {
+        return repository.findStudentByTest(username);
+    }
     public void newStudent(Student student) {
         repository.save(student);
     }

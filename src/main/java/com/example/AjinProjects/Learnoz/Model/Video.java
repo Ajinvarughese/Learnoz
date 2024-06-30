@@ -1,5 +1,8 @@
 package com.example.AjinProjects.Learnoz.Model;
 
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Video {
     private String url;
     private Integer likes;
