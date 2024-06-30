@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/eLearning/student")
+@RequestMapping("api/eLearning/Student")
 public class StudentController {
 
     private final StudentService service;
@@ -18,7 +18,7 @@ public class StudentController {
         this.service = service;
     }
 
-    @GetMapping("/{username}/{password}")
+    @GetMapping("/{username}")
     public Optional<Student> findStudent(@PathVariable String username, @PathVariable String password) {
         return service.findStudent(username, password);
     }

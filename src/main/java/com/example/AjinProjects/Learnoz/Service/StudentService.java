@@ -30,13 +30,13 @@ public class StudentService {
         String password = student.getPassword();
 
         if(!username.isEmpty()) {
-            Optional<Student> myUsername = repository.findStudentByUsername(username, password);
-            if(myUsername.isEmpty()) {
+            Optional<Student> studentUsername = repository.findStudentByUsername(username, password);
+            if(studentUsername.isEmpty()) {
                 throw new IllegalStateException("User not found!");
             }
         }else if(!email.isEmpty()) {
-            Optional<Student> myEmail = repository.findStudentByEmail(email, password);
-            if(myEmail.isEmpty()) {
+            Optional<Student> studentEmail = repository.findStudentByEmail(email, password);
+            if(studentEmail.isEmpty()) {
                 throw new IllegalStateException("User not found!");
             }
         }else {
