@@ -14,8 +14,9 @@ public class User {
     private Date regDate;
     private String dob;
     private String gender;
+    private Boolean blockStatus;
 
-    public User(String firstName, String sureName, String email, String password, String username, Date regDate, String dob, String gender) {
+    public User(String firstName, String sureName, String email, String password, String username, Date regDate, String dob, String gender, Boolean blockStatus) {
         this.firstName = firstName;
         this.sureName = sureName;
         this.email = email;
@@ -24,6 +25,7 @@ public class User {
         this.regDate = regDate;
         this.dob = dob;
         this.gender = gender;
+        this.blockStatus = blockStatus;
     }
 
     public User() {}
