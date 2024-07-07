@@ -2,11 +2,9 @@ package com.example.AjinProjects.Learnoz.Controller;
 
 import com.example.AjinProjects.Learnoz.Model.Course;
 import com.example.AjinProjects.Learnoz.Service.CourseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,8 +12,33 @@ import java.util.Optional;
 public class CourseController {
     private CourseService service;
 
-    @GetMapping("/{course_id}")
+    @GetMapping("/{courseId}")
     public Optional<Course> showCourse(@PathVariable Long id) {
-        return service.findCourses(id);
+        return service.showCourse(id);
+    }
+
+    @GetMapping("/genre/{genre}")
+    public List<Course> showCourseByGenre(@PathVariable String genre) {
+        return service.showCourseByGenre(genre);
+    }
+
+    @GetMapping("/tutor/{tutorId}")
+    public List<Course> showCourseByTutor(@PathVariable Long id) {
+        return service.showCourseByTutor(id);
+    }
+
+    @PostMapping("/newCourse")
+    public void newCourse(Course course) {
+        service.newCourse(course);
+    }
+
+    @PostMapping("/updateCourse")
+    public void updateCourse(Course course) {
+        service.updateCourse(course);
+    }
+
+    @DeleteMapping("/deleteCourse")
+    public void deleteCourse(Course course) {
+        service.deleteCourse(course);
     }
 }

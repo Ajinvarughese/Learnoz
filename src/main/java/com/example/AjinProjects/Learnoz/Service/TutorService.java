@@ -35,7 +35,7 @@ public class TutorService {
                 throw new IllegalStateException("User not found!");
             }
         }else if(!email.isEmpty()) {
-            Optional<Tutor> tutorEmail = repository.findStudentByEmail(email, password);
+            Optional<Tutor> tutorEmail = repository.findTutorByEmail(email, password);
             if(tutorEmail.isEmpty()) {
                 throw new IllegalStateException("User not found!");
             }

@@ -2,7 +2,8 @@ package com.example.AjinProjects.Learnoz.Model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Entity
 public class Course extends Video {
@@ -10,20 +11,22 @@ public class Course extends Video {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long tutorId;
+    private String password;
     private String genre;
     private String difficulty;
     @Column(columnDefinition = "TEXT")
     private String description;
-    private Date date;
+    private String dateTime;
 
-    public Course(String url, Integer likes, Float rating, Long id, Long tutor_id, String genre, String difficulty, String description, Date date) {
+    public Course(String url, Integer likes, Float rating, Long id, Long tutorId, String password, String genre, String difficulty, String description, String dateTime) {
         super(url, likes, rating);
         this.id = id;
-        this.tutorId = tutor_id;
+        this.tutorId = tutorId;
+        this.password = password;
         this.genre = genre;
         this.difficulty = difficulty;
         this.description = description;
-        this.date = date;
+        this.dateTime = dateTime;
     }
 
     public Long getId() {
@@ -40,6 +43,14 @@ public class Course extends Video {
 
     public void setTutorId(Long tutorId) {
         this.tutorId = tutorId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getGenre() {
@@ -66,11 +77,11 @@ public class Course extends Video {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

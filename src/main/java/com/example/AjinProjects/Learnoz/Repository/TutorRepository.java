@@ -14,5 +14,8 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
     Optional<Tutor> findTutorByUsername(@Param("username") String username, @Param("password") String password);
 
     @Query("SELECT s FROM Tutor s WHERE s.email = :email AND s.password = :password")
-    Optional<Tutor> findStudentByEmail(@Param("email") String email, @Param("password") String password);
+    Optional<Tutor> findTutorByEmail(@Param("email") String email, @Param("password") String password);
+
+    @Query("SELECT s FROM Tutor s WHERE s.id = :id AND s.password = :password")
+    Optional<Tutor> findTutorById(@Param("id") Long id, @Param("password") String password);
 }
