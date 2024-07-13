@@ -20,8 +20,8 @@ public class TutorService {
         repository.save(tutor);
     }
 
-    public Optional<Tutor> findTutor(Tutor tutor, String username) {
-        return repository.findTutorByUsername(tutor.getPassword(), username);
+    public Optional<Tutor> findTutor(String username, String password) {
+        return repository.findTutorByUsername(username, password);
     }
 
     public void loginTutor(Tutor tutor) {

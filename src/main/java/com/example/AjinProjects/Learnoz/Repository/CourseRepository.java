@@ -9,15 +9,25 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course, Long> {
-    @Query("SELECT s FROM Course s WHERE s.id = :id")
-    Optional<Course> findVideo(@Param("id") Long id);
+public interface CourseRepository extends JpaRepository<Course, UUID> {
+    @Query("SELECT c FROM Course c WHERE c.id = :id")
+    Optional<Course> findVideo(@Param("id") UUID id);
 
-    @Query("SELECT s FROM Course s WHERE s.genre = :genre")
+    @Query("SELECT c FROM Course c WHERE c.genre = :genre")
     List<Course> findVideoByGenre(@Param("genre") String genre);
 
-    @Query("SELECT s FROM Course s WHERE s.tutorId = :id")
-    List<Course> findVideoByTutor(@Param("id") Long id);
+    @Query("SELECT c FROM Course c WHERE c.tutorId = :id")
+    List<Course> findVideoByTutor(@Param("id") UUID id);
+
+    @Query("UPDATE Course c SET c.likes = c.likes+1 WHERE c.id = :id")
+    void incrementLike(@Param("id") UUID id);
+
+    @Query("UPDATE Course c SET c.likes = c.likes-1 WHERE c.id = :id")
+    void decrementLike(@Param("id") UUID id);
+
+    @Query("UPDATE Course c SET c.views = c.views+1 WHERE c.id = :id")
+    void addView(@Param("id") UUID id);
 }

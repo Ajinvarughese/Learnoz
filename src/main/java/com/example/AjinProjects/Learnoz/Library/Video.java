@@ -1,4 +1,4 @@
-package com.example.AjinProjects.Learnoz.Model;
+package com.example.AjinProjects.Learnoz.Library;
 
 import jakarta.persistence.MappedSuperclass;
 
@@ -6,12 +6,12 @@ import jakarta.persistence.MappedSuperclass;
 public class Video {
     private String url;
     private Integer likes;
-    private Float rating;
+    private Integer views;
 
-    public Video(String url, Integer likes, Float rating) {
+    public Video(String url, Integer likes, Integer views) {
         this.url = url;
         this.likes = likes;
-        this.rating = rating;
+        this.views = views;
     }
 
     public String getUrl() {
@@ -30,11 +30,11 @@ public class Video {
         this.likes = likes;
     }
 
-    public Float getRating() {
-        return rating;
+    public Integer getViews() {
+        return views;
     }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
+    public void setViews(Integer views) {
+        this.views = views;
     }
 }

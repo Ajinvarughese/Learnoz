@@ -1,5 +1,6 @@
 package com.example.AjinProjects.Learnoz.Controller;
 
+import com.example.AjinProjects.Learnoz.Library.EnrolledStudents;
 import com.example.AjinProjects.Learnoz.Model.Student;
 import com.example.AjinProjects.Learnoz.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +20,15 @@ public class StudentController {
         this.service = service;
     }
 
-//    @GetMapping("/{username}")
-//    public Optional<Student> findStudent(@PathVariable String username, @PathVariable String password) {
-//        return service.findStudent(username, password);
-//    }
-
-    @GetMapping("/{username}")
-    public Optional<Student> allStud(@PathVariable String username) {
-        return service.showAll(username);
+    @PostMapping("/{username}")
+    public Optional<Student> studentProfile(@PathVariable String username, @RequestBody String password) {
+        return service.findStudent(username, password);
     }
 
+    @PostMapping("/enroll")
+    public void enrollCourse(@RequestBody EnrolledStudents enrolledStudents) {
+        service.enrollCourse(enrolledStudents);
+    }
     @PostMapping("/signup")
     public void newStudent(@RequestBody Student student) {
         service.newStudent(student);
@@ -38,6 +38,11 @@ public class StudentController {
     public void loginStudent(@RequestBody Student student) {
         service.loginStudent(student);
     }
+
+    /*
+        TODO:
+            - Remove enrollment in courses
+    */
 }
 
 

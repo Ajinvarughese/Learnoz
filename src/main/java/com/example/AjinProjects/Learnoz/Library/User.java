@@ -1,4 +1,4 @@
-package com.example.AjinProjects.Learnoz.Model;
+package com.example.AjinProjects.Learnoz.Library;
 
 import jakarta.persistence.*;
 

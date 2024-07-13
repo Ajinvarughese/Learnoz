@@ -16,8 +16,8 @@ public class TutorController {
         this.service = service;
     }
     @GetMapping("/{username}")
-    public Optional<Tutor> findTutor(@RequestBody Tutor tutor, @PathVariable String username) {
-        return service.findTutor(tutor, username);
+    public Optional<Tutor> tutorProfile(@PathVariable String username, @RequestBody String password) {
+        return service.findTutor(username, password);
     }
 
     @PostMapping("/signup")
@@ -29,4 +29,5 @@ public class TutorController {
     public void loginStudent(@RequestBody Tutor tutor) {
         service.loginTutor(tutor);
     }
+
 }

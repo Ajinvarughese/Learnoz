@@ -1,15 +1,15 @@
 package com.example.AjinProjects.Learnoz.Model;
 
+import com.example.AjinProjects.Learnoz.Library.Video;
 import jakarta.persistence.*;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Entity
 public class Course extends Video {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private UUID id;
     private Long tutorId;
     private String password;
     private String genre;
@@ -18,8 +18,8 @@ public class Course extends Video {
     private String description;
     private String dateTime;
 
-    public Course(String url, Integer likes, Float rating, Long id, Long tutorId, String password, String genre, String difficulty, String description, String dateTime) {
-        super(url, likes, rating);
+    public Course(String url, Integer likes, Integer views, UUID id, Long tutorId, String password, String genre, String difficulty, String description, String dateTime) {
+        super(url, likes, views);
         this.id = id;
         this.tutorId = tutorId;
         this.password = password;
@@ -29,11 +29,11 @@ public class Course extends Video {
         this.dateTime = dateTime;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
