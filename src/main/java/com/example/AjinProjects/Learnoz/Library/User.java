@@ -11,12 +11,12 @@ public class User {
     private String email;
     private String password;
     private String username;
-    private Date regDate;
+    private String regDate;
     private String dob;
     private String gender;
     private Boolean blockStatus;
 
-    public User(String firstName, String sureName, String email, String password, String username, Date regDate, String dob, String gender, Boolean blockStatus) {
+    public User(String firstName, String sureName, String email, String password, String username, String regDate, String dob, String gender, Boolean blockStatus) {
         this.firstName = firstName;
         this.sureName = sureName;
         this.email = email;
@@ -27,8 +27,13 @@ public class User {
         this.gender = gender;
         this.blockStatus = blockStatus;
     }
-
-    public User() {}
+    public User(){}
+    //for login
+    public User(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -70,11 +75,11 @@ public class User {
         this.username = username;
     }
 
-    public Date getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 
@@ -92,5 +97,13 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Boolean getBlockStatus() {
+        return blockStatus;
+    }
+
+    public void setBlockStatus(Boolean blockStatus) {
+        this.blockStatus = blockStatus;
     }
 }

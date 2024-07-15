@@ -1,5 +1,6 @@
 package com.example.AjinProjects.Learnoz.Service;
 
+import com.example.AjinProjects.Learnoz.Library.DateTime;
 import com.example.AjinProjects.Learnoz.Library.EnrolledStudents;
 import com.example.AjinProjects.Learnoz.LibraryRepository.EnrolledRepository;
 import com.example.AjinProjects.Learnoz.Model.Student;
@@ -26,23 +27,35 @@ public class StudentService {
     }
 
     public void newStudent(Student student) {
-        repository.save(student);
+        Student newStudent = new Student(
+                student.getFirstName(),
+                student.getSureName(),
+                student.getEmail(),
+                student.getPassword(),
+                student.getUsername(),
+                DateTime.currentDateTime(),
+                student.getDob(),
+                student.getGender(),
+                false
+        );
+        repository.save(newStudent);
     }
 
     public void loginStudent(Student student) {
-        String email = student.getEmail();
-        String username = student.getUsername();
-        String password = student.getPassword();
+        Student loginStudent = new Student(student.getEmail(), student.getUsername(), student.getPassword());
+        String email = loginStudent.getEmail();
+        String username = loginStudent.getUsername();
+        String password = loginStudent.getPassword();
 
         if(!username.isEmpty()) {
             Optional<Student> studentUsername = repository.findStudentByUsername(username, password);
             if(studentUsername.isEmpty()) {
-                throw new IllegalStateException("User not found!");
+                throw new IllegalStateException("username or password must be wrong!");
             }
         }else if(!email.isEmpty()) {
             Optional<Student> studentEmail = repository.findStudentByEmail(email, password);
             if(studentEmail.isEmpty()) {
-                throw new IllegalStateException("User not found!");
+                throw new IllegalStateException("username or password must be wrong!");
             }
         }else {
             throw new IllegalStateException("Bad json request!");
@@ -51,5 +64,8 @@ public class StudentService {
 
     public void enrollCourse(EnrolledStudents enrolledStudents) {
         enrolledRepository.save(enrolledStudents);
+    }
+    public void removeEnrollment(UUID studentId, UUID courseId) {
+        enrolledRepository.removeEnrollment(studentId, courseId);
     }
 }

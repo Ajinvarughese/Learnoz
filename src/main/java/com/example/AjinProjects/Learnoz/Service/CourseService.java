@@ -78,9 +78,9 @@ public class CourseService {
         switch (userType) {
             case "student":
                 if(studentAuthentication(userId, password)) {
-                    repository.incrementLike(courseId);
                     Likes likes = new Likes(courseId, userId, "", userType, DateTime.currentDateTime());
                     try {
+                        repository.incrementLike(courseId);
                         likesRepository.save(likes);
                     }catch (IllegalStateException e) {
                         throw new IllegalStateException("Course not found ERROR: \n\n"+e.getMessage());
@@ -89,9 +89,9 @@ public class CourseService {
                 break;
             case "tutor":
                 if(tutorAuthentication(userId, password)) {
-                    repository.incrementLike(courseId);
                     Likes likes = new Likes(courseId, userId, userType, "", DateTime.currentDateTime());
                     try {
+                        repository.incrementLike(courseId);
                         likesRepository.save(likes);
                     }catch (IllegalStateException e) {
                         throw new IllegalStateException("Course not found ERROR: \n\n"+e.getMessage());

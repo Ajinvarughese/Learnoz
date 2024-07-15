@@ -1,6 +1,7 @@
 package com.example.AjinProjects.Learnoz.Service;
 
 
+import com.example.AjinProjects.Learnoz.Library.DateTime;
 import com.example.AjinProjects.Learnoz.Model.Tutor;
 import com.example.AjinProjects.Learnoz.Repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,18 @@ public class TutorService {
     }
 
     public void newTutor(Tutor tutor) {
-        repository.save(tutor);
+        Tutor newTutor = new Tutor(
+                tutor.getFirstName(),
+                tutor.getSureName(),
+                tutor.getEmail(),
+                tutor.getPassword(),
+                tutor.getUsername(),
+                DateTime.currentDateTime(),
+                tutor.getDob(),
+                tutor.getGender(),
+                false
+        );
+        repository.save(newTutor);
     }
 
     public Optional<Tutor> findTutor(String username, String password) {

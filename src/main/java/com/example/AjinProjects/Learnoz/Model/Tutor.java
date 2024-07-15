@@ -12,14 +12,17 @@ import java.util.UUID;
 @Entity
 public class Tutor extends User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    public Tutor(String firstName, String sureName, String email, String password, String username, Date regDate, String dob, String gender, Boolean blockStatus) {
+    public Tutor() {}
+    public Tutor(String firstName, String sureName, String email, String password, String username, String regDate, String dob, String gender, Boolean blockStatus) {
         super(firstName, sureName, email, password, username, regDate, dob, gender, blockStatus);
     }
 
-    public Tutor() {}
+    public Tutor(String email, String username, String password) {
+        super(email, username, password);
+    }
 
     public UUID getId() {
         return id;

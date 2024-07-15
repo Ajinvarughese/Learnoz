@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface LikesRepository extends JpaRepository<Likes, Long> {
-    @Query("DELETE l FROM Likes l WHERE l.userId = :id")
+    @Query("DELETE FROM Likes l WHERE l.userId = :id")
     void removeLikeByUserId(@Param("id") UUID id);
 }

@@ -19,7 +19,10 @@ public class StudentController {
     public StudentController(StudentService service) {
         this.service = service;
     }
-
+    @GetMapping("/awi")
+    public String show() {
+        return "Hello World";
+    }
     @PostMapping("/{username}")
     public Optional<Student> studentProfile(@PathVariable String username, @RequestBody String password) {
         return service.findStudent(username, password);
@@ -29,6 +32,12 @@ public class StudentController {
     public void enrollCourse(@RequestBody EnrolledStudents enrolledStudents) {
         service.enrollCourse(enrolledStudents);
     }
+
+    @PostMapping("/removeEnrollment")
+    public void removeEnrollment(@RequestBody EnrolledStudents enrolledStudents) {
+        service.removeEnrollment(enrolledStudents.getStudentId(), enrolledStudents.getCourseId());
+    }
+
     @PostMapping("/signup")
     public void newStudent(@RequestBody Student student) {
         service.newStudent(student);
@@ -39,10 +48,6 @@ public class StudentController {
         service.loginStudent(student);
     }
 
-    /*
-        TODO:
-            - Remove enrollment in courses
-    */
 }
 
 

@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 public class Course extends Video {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private Long tutorId;
     private String password;

@@ -12,10 +12,10 @@ public class EnrolledStudents {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long enrollId;
-    private Long studentId;
-    private Long courseId;
+    private UUID studentId;
+    private UUID courseId;
 
-    public EnrolledStudents(Long enrollId, Long studentId, Long courseId) {
+    public EnrolledStudents(Long enrollId, UUID studentId, UUID courseId) {
         this.enrollId = enrollId;
         this.studentId = studentId;
         this.courseId = courseId;
@@ -31,19 +31,19 @@ public class EnrolledStudents {
         this.enrollId = enrollId;
     }
 
-    public Long getStudentId() {
+    public UUID getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(UUID studentId) {
         this.studentId = studentId;
     }
 
-    public Long getCourseId() {
+    public UUID getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(Long courseId) {
+    public void setCourseId(UUID courseId) {
         this.courseId = courseId;
     }
 }
