@@ -1,4 +1,30 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --surface: #ffffff;
+  --dark2: #f0f0f0;
+  --text: #000000;
+  --text2: #4a4a4acf;
+  --dark3: #e0e0e0;
+  --dark4: #cccccc;
+  --button: #fff;
+  --j404BG: var(--accent);
+}
+
+.dar-mode {
+  --surface: #1b1b1b;
+  --dark2: #121212;
+  --text: #D3D3D3;
+  --text2: #B0B0B0;
+  --accent: #f3375a;
+  --accent2: #f32349;
+  --dark3: #2a2a2a;
+  --dark4: #333333;
+  --button: #D3D3D3;
+  --warning: #f32349;
+  --j404BG: none;
 }
