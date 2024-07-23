@@ -6,6 +6,8 @@ import com.example.AjinProjects.Learnoz.LibraryRepository.EnrolledRepository;
 import com.example.AjinProjects.Learnoz.Model.Student;
 import com.example.AjinProjects.Learnoz.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,7 +28,7 @@ public class StudentService {
         return repository.findStudentByUsername(username, password);
     }
 
-    public void newStudent(Student student) {
+    public ResponseEntity<String> newStudent(Student student) {
         Student newStudent = new Student(
                 student.getFirstName(),
                 student.getSureName(),
@@ -39,6 +41,7 @@ public class StudentService {
                 false
         );
         repository.save(newStudent);
+        return new ResponseEntity<>("Student created successfully", HttpStatus.OK);
     }
 
     public void loginStudent(Student student) {

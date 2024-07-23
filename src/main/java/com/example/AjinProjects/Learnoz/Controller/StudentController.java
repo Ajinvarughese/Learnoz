@@ -4,6 +4,7 @@ import com.example.AjinProjects.Learnoz.Library.EnrolledStudents;
 import com.example.AjinProjects.Learnoz.Model.Student;
 import com.example.AjinProjects.Learnoz.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
@@ -39,8 +40,8 @@ public class StudentController {
     }
 
     @PostMapping("/signup")
-    public void newStudent(@RequestBody Student student) {
-        service.newStudent(student);
+    public ResponseEntity<String> newStudent(@RequestBody Student student) {
+        return service.newStudent(student);
     }
 
     @PostMapping("/login")

@@ -34,6 +34,13 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        setUsername(email.split('@')[0]);
+    }, [email]);
+
+
     // Error finder
     const [firstNameError, setFirstNameError] = useState(false);
     const [secondNameError, setSecondNameError] = useState(false);
@@ -41,12 +48,16 @@ const Signup = () => {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
+    const [checkEmail, setCheckEmail] = useState(false);
+
     const signupData = {
         firstName: firstName,
         secondName: secondName,
-        userType: userType,
         email: email,
-        password: password
+        password: password,
+        username: username,
+        dob: '',
+        gender: '',
     }
 
     const validateForm = (event) => {
@@ -78,6 +89,36 @@ const Signup = () => {
         }
         
         if(setted) {
+            if(userType === 'student') {
+                fetch('http://localhost:8080/api/eLearning/student/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(signupData),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json().then(data => {
+                            console.log('Success:', data);
+                        });
+                    } else if (response.status === 409) {
+                        setCheckEmail(true);
+                    } else {
+                        return response.json().then(data => {
+                            console.error('Error:', data);
+                        });
+                    }
+                })
+                .catch(error => {
+                    if (error.message === 'Failed to fetch') {
+                        alert('Server timed out');
+                    } else {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+            console.log(signupData);
             return true;
         }else {
             setIsLoading(false);
