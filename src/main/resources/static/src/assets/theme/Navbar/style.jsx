@@ -2,7 +2,7 @@ const Style = () => {
     return {
         navOutside: {
             position: "relative",
-            marginLeft: {lg: "296px", xs: "0"},
+            
         },
         nav: {
             display: "flex",
@@ -14,7 +14,6 @@ const Style = () => {
             left:"50%",
             transform: "translate(-50%, 0)",
             backdropFilter: 'blur(12px)',
-            maxWidth: '830px',
             flexDirection: {xs: "row-reverse", lg: "row-verse"},
             height: '3.7rem',
             padding: "0.5rem 5%",
@@ -63,6 +62,7 @@ const Style = () => {
             },
         },
         nav2: {
+            maxWidth: '290px',
             marginTop: '1px',
             height: '100vh',
             background: "#fff",
@@ -73,10 +73,14 @@ const Style = () => {
         },
         listItem: {  
             width: "fit-content",
+            cursor: 'pointer',
             marginTop: '0.6rem',
             width: "100%",
             fontSize: '15px',
             textAlign: 'left',
+            '&:hover': {
+                background: 'var(--dark2)'
+            }
         },
         divider: {
             opacity: '0.7',
@@ -86,6 +90,9 @@ const Style = () => {
         button: {
             color: 'var(--text2)',
             textAlign: 'left',
+            '&:hover': {
+                background: 'none',
+            }
         },
         appDrawer: {
             position: "relative",

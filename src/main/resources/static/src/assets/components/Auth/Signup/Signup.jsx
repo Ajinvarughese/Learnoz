@@ -50,19 +50,20 @@ const Signup = () => {
 
     const [checkEmail, setCheckEmail] = useState(false);
 
-    const signupData = {
-        firstName: firstName,
-        secondName: secondName,
-        email: email,
-        password: password,
-        username: username,
-        dob: '',
-        gender: '',
-    }
 
     const validateForm = (event) => {
         event.preventDefault();
         setIsLoading(true);
+
+        const signupData = {
+            firstName: firstName,
+            secondName: secondName,
+            email: email,
+            password: password,
+            username: username,
+            dob: '',
+            gender: '',
+        }
         
         let setted = true;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -99,16 +100,12 @@ const Signup = () => {
                 })
                 .then(response => {
                     if (response.ok) {
-                        return response.json().then(data => {
-                            console.log('Success:', data);
-                        });
+                        console.log('Signup Success!');
                     } else if (response.status === 409) {
                         setCheckEmail(true);
-                    } else {
-                        return response.json().then(data => {
-                            console.error('Error:', data);
-                        });
+                        console.log('email alredy exists so error!');
                     }
+                    setIsLoading(false);
                 })
                 .catch(error => {
                     if (error.message === 'Failed to fetch') {
@@ -116,9 +113,12 @@ const Signup = () => {
                     } else {
                         console.error('Error:', error);
                     }
+                    setIsLoading(false);
                 });
+            }else {
+                //tutor codes
+                setIsLoading(false);
             }
-            console.log(signupData);
             return true;
         }else {
             setIsLoading(false);
@@ -191,10 +191,13 @@ const Signup = () => {
                             id="outlined-basic" 
                             label="Email" 
                             variant="outlined" 
-                            error={emailError}
-                            helperText={emailError ? "Enter a valid email": ""}
+                            error={(emailError || checkEmail)}
+                            helperText={emailError ? "Enter a valid email" : checkEmail ? "Email already exists" : ""}
                             onChange={(event) => setEmail(event.target.value)}
-                            onInput={() => {setEmailError(false)}}
+                            onInput={() => {
+                                setEmailError(false); 
+                                setCheckEmail(false);
+                            }}
                         />
 
                         <FormControl sx={...styles.pass} variant="outlined" error={passwordError}>

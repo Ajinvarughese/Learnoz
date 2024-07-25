@@ -40,8 +40,13 @@ public class StudentService {
                 student.getGender(),
                 false
         );
-        repository.save(newStudent);
-        return new ResponseEntity<>("Student created successfully", HttpStatus.OK);
+        Optional<Student> checkExistence = repository.findStudentByEmailOnly(student.getEmail());
+        if(checkExistence.isPresent()) {
+            return new ResponseEntity<>("Email already exists", HttpStatus.CONFLICT);
+        }else {
+            repository.save(newStudent);
+            return new ResponseEntity<>("Student created successfully", HttpStatus.OK);
+        }
     }
 
     public void loginStudent(Student student) {

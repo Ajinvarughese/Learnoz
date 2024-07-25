@@ -28,6 +28,7 @@ const Navbar = () => {
 
     useEffect(() => {
         if (clicked) {
+            window.scrollTo({top: 0, behavior: 'smooth'});
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
@@ -47,12 +48,17 @@ const Navbar = () => {
         window.location.href = `/${path}`;
     }
 
+
     return (
         <Box sx={theme.navbar}>
-            <Box sx={theme.navOutside}>
+            <Box sx={{
+                    ...theme.navOutside,
+                    marginLeft: {lg: '296px', xs: '0'}
+                }}>
                 <Grid sx={{
                         ...theme.nav,
                         width: clicked ? '100%' : '97%',
+                        maxWidth: clicked ? '100%' : '830px', 
                         top: clicked ? '0' : '10px',
                     }}
                 >
