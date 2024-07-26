@@ -53,7 +53,7 @@ const Navbar = () => {
         <Box sx={theme.navbar}>
             <Box sx={{
                     ...theme.navOutside,
-                    marginLeft: {lg: '296px', xs: '0'}
+                    paddingLeft: {lg: '0', xs: '0'}
                 }}>
                 <Grid sx={{
                         ...theme.nav,
@@ -178,16 +178,17 @@ const Navbar = () => {
             </Box>
 
             <Grid sx={{...theme.appDrawer,}}>
-                {/* <List sx={{
+                <List sx={{
                         ...theme.appDrawerMain2,
                         transition: '0.4s ease',
                     }}
                 >
-                </List> */}
+                </List>
                 <List sx={{
                         ...theme.appDrawerMain,
                         transition: '0.4s ease',
-                        overflow: 'auto' 
+                        overflow: 'auto',
+                        width: '540px',
                     }}
                 >
                     

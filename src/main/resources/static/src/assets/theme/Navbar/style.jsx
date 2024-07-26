@@ -1,20 +1,24 @@
 const Style = () => {
     return {
         navOutside: {
-            position: "relative",
+            position: "fixed",
+            width: {lg: '80%', xs: '100%'},
+            zIndex: 10000,
+            marginLeft: {lg: '296px', xs: '0'},
             
         },
         nav: {
             display: "flex",
             zIndex: '100000',
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1)",
-            position: "absolute",
+            
             borderRadius: '7px',
-            top: '0', 
-            left:"50%",
-            transform: "translate(-50%, 0)",
+            margin: '0.7rem auto',
+            // top: '0', 
+            // left:"50%",
+            // transform: "translate(-50%, 0)",
             backdropFilter: 'blur(12px)',
-            flexDirection: {xs: "row-reverse", lg: "row-verse"},
+            flexDirection: "row-reverse",
             height: '3.7rem',
             padding: "0.5rem 5%",
             alignItems: "center",
@@ -45,7 +49,10 @@ const Style = () => {
             top: '100%',
             left: '0',
             backgroundColor: 'var(--surface)',
-            width: "40%",
+            width: {
+                xs: '60%',
+                sm: '40%',
+            },
             zIndex: '100',
             maxWidth: '296px',
             maxHeight: {
@@ -69,7 +76,10 @@ const Style = () => {
             position: 'absolute',
             top: '100%',
             zIndex: '100',
-            width: "40%",
+            width: {
+                xs: '60%',
+                sm: '40%',
+            },
         },
         listItem: {  
             width: "fit-content",
