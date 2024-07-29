@@ -19,4 +19,7 @@ public interface TutorRepository extends JpaRepository<Tutor, UUID> {
 
     @Query("SELECT s FROM Tutor s WHERE s.id = :id AND s.password = :password")
     Optional<Tutor> findTutorById(@Param("id") UUID id, @Param("password") String password);
+
+    @Query("SELECT s FROM Tutor s WHERE s.email = :email")
+    Optional<Tutor> findTutorByEmailOnly(@Param("email") String email);
 }

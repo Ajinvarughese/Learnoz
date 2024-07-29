@@ -116,7 +116,30 @@ const Signup = () => {
                     setIsLoading(false);
                 });
             }else {
-                //tutor codes
+                fetch('http://localhost:8080/api/eLearning/tutor/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(signupData),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Signup Success!');
+                    } else if (response.status === 409) {
+                        setCheckEmail(true);
+                        console.log('email alredy exists so error!');
+                    }
+                    setIsLoading(false);
+                })
+                .catch(error => {
+                    if (error.message === 'Failed to fetch') {
+                        alert('Server timed out');
+                    } else {
+                        console.error('Error:', error);
+                    }
+                    setIsLoading(false);
+                });
                 setIsLoading(false);
             }
             return true;

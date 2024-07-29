@@ -5,6 +5,8 @@ import com.example.AjinProjects.Learnoz.Library.DateTime;
 import com.example.AjinProjects.Learnoz.Model.Tutor;
 import com.example.AjinProjects.Learnoz.Repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -17,7 +19,7 @@ public class TutorService {
         this.repository = repository;
     }
 
-    public void newTutor(Tutor tutor) {
+    public ResponseEntity<String> newTutor(Tutor tutor) {
         Tutor newTutor = new Tutor(
                 tutor.getFirstName(),
                 tutor.getSureName(),
@@ -29,7 +31,14 @@ public class TutorService {
                 tutor.getGender(),
                 false
         );
-        repository.save(newTutor);
+
+        Optional<Tutor> checkExistence = repository.findTutorByEmailOnly(tutor.getEmail());
+        if(checkExistence.isPresent()) {
+            return new ResponseEntity<>("Email already exists", HttpStatus.CONFLICT);
+        }else {
+            repository.save(newTutor);
+            return new ResponseEntity<>("Student created successfully", HttpStatus.OK);
+        }
     }
 
     public Optional<Tutor> findTutor(String username, String password) {

@@ -11,12 +11,9 @@ const Style = () => {
             display: "flex",
             zIndex: '100000',
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1)",
-            
             borderRadius: '7px',
             margin: '0.7rem auto',
-            // top: '0', 
-            // left:"50%",
-            // transform: "translate(-50%, 0)",
+    
             backdropFilter: 'blur(12px)',
             flexDirection: "row-reverse",
             height: '3.7rem',
@@ -31,7 +28,7 @@ const Style = () => {
             position: 'absolute',
             top: '100%',
             left: '0',
-            border: '1px solid',
+       
             zIndex: '100',
             width: '100%',
             height: '100vh',
@@ -105,6 +102,7 @@ const Style = () => {
             }
         },
         appDrawer: {
+            
             position: "relative",
             display: {lg: 'block', xs:'none'}
         },

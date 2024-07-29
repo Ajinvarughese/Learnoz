@@ -4,9 +4,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Styles from './style';
+import { useEffect, useState } from 'react';
+
 
 const data = [
   {
+    
     src: 'https://i.ytimg.com/vi/pLqipJNItIo/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBkklsyaw9FxDmMKapyBYCn9tbPNQ',
     title: 'Don Diablo @ Tomorrowland Main Stage 2019 | Official…',
     channel: 'Don Diablo',
@@ -95,34 +98,49 @@ const data = [
 const styles = Styles();
 
 function Media(props) {
-  const { loading = false } = props;
+  const [loadedIndexes, setLoadedIndexes] = useState([]);
+  
+  const handleOnline = () => {
+    window.location.reload(); 
+  }
+
+  useEffect(() => {
+    window.addEventListener('online', () => {
+      window.location.reload();
+    })
+    return () => window.removeEventListener('online', handleOnline);
+  }, []);
+
+  const handleLoaded = (index) => {
+    setLoadedIndexes((prev) => [...prev, index]);
+  }
 
   return (
     <Box sx={styles.cardMain}>
-      <Grid  container>
-        {(loading ? Array.from(new Array(3)) : data).map((item, index) => (
+      <Grid container>
+        {data.map((item, index) => (
           <Grid
             pr={1.7}
             item
             key={index}
             xs={12}
             sm={6}
-            md={4}
-            sx={styles.card}
+            md={6}
+            lg={4}
+            sx={{ ...styles.card, maxWidth: '396px' }}
           >
-            {item ? (
-              <Box sx={styles.cardImg}>
-                <img
-                  style={styles.thumbnail}
-                  alt={item.title}
-                  src={item.src}
-                />
-              </Box>
-            ) : (
-              <Skeleton variant="rectangular"/>
-            )}
-
-            {item ? (
+            <Box sx={styles.cardImg}>
+              <img
+                alt={item.title}
+                src={item.src}
+                onLoad={() => handleLoaded(index)}
+                style={{ ...styles.thumbnail, display: loadedIndexes.includes(index) ? 'block' : 'none' }}
+              />
+              {!loadedIndexes.includes(index) && (
+                <Skeleton width="100%" height="176px" sx={{ borderRadius: 2 }} variant="rectangular" />
+              )}
+            </Box>
+            {loadedIndexes.includes(index) ? (
               <Box py={2} px={1}>
                 <Typography gutterBottom variant="body2">
                   {item.title}
@@ -135,9 +153,11 @@ function Media(props) {
                 </Typography>
               </Box>
             ) : (
-              <Box>
-                <Skeleton />
-                <Skeleton width="60%" />
+              <Box sx={{ margin: '0.6rem 0 1.2rem 0',}}>
+                <Box sx={{ margin: '0 auto', width: '100%' }}>
+                  <Skeleton width="100%" />
+                  <Skeleton width="47%" />
+                </Box>
               </Box>
             )}
           </Grid>
@@ -154,7 +174,6 @@ Media.propTypes = {
 export default function Video() {
   return (
     <Box sx={{ overflow: 'hidden', marginLeft: { lg: "296px", xs: "0" }, }}>
-      {/* <Media loading /> */}
       <Media />
     </Box>
   );

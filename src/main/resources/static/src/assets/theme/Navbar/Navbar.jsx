@@ -7,13 +7,15 @@ import Style from "./style";
 import LoginIcon from '@mui/icons-material/Login';
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
+import ProfileIcon from "@mui/icons-material/Person";
 import MovieIcon from "@mui/icons-material/Movie";
 import BookIcon from "@mui/icons-material/Book";
 import CallIcon from "@mui/icons-material/Call";
 import InstagramIcon  from "@mui/icons-material/Instagram";
 import XIcon from "@mui/icons-material/X";
 import GithubIcon from "@mui/icons-material/GitHub";
+import ThumpIcon from "@mui/icons-material/ThumbUp";
+import TrendingIcon from "@mui/icons-material/TrendingUp";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const Navbar = () => {
@@ -35,14 +37,14 @@ const Navbar = () => {
         }
     
     }, [clicked]);
-    const handleScroll = () => {
-        setScroll(!scroll);
-        console.log("SCROLLED!!!");
-    }
-    useEffect(()=> {
-        window.addEventListener("scroll", handleScroll);
+    // const handleScroll = () => {
+    //     setScroll(!scroll);
+    //     console.log("SCROLLED!!!");
+    // }
+    // useEffect(()=> {
+    //     window.addEventListener("scroll", handleScroll);
 
-    }, []);
+    // }, []);
 
     const handleLink = (path) => {
         window.location.href = `/${path}`;
@@ -79,7 +81,7 @@ const Navbar = () => {
                         </List>
                     </Box>
                     <Box>
-                        <h2>LOGO</h2>
+                        <Typography variant="h5" sx={{fontWeight: 600}}>Learnoz</Typography>
                     </Box>
                     <Box sx={{display: {xs: 'block', lg: 'none'}}}>
                         <IconButton onClick={handleNav}>
@@ -115,34 +117,34 @@ const Navbar = () => {
                                 
                                 <Divider sx={theme.divider}>Navigation</Divider>
                                 
-                                <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                                <ListItem sx={theme.listItem} onClick={() => handleLink('')} >
                                     <Button variant="text" sx={theme.button}>
                                         <HomeIcon sx={{fontSize: 'large'}}></HomeIcon>
                                         <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Home</Typography>
                                     </Button>
                                 </ListItem>
-                                <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                                <ListItem sx={theme.listItem} onClick={() => handleLink('profile')} >
                                     <Button variant="text" sx={theme.button}>
-                                        <InfoIcon sx={{fontSize: 'medium'}}></InfoIcon>
-                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>About</Typography>
+                                        <ProfileIcon sx={{fontSize: 'medium'}}></ProfileIcon>
+                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Profile</Typography>
                                     </Button>
                                 </ListItem>
-                                <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                                <ListItem sx={theme.listItem} onClick={() => handleLink('courses')} >
                                     <Button variant="text" sx={theme.button}>
                                         <MovieIcon sx={{fontSize: 'medium'}}></MovieIcon>
                                         <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Courses</Typography>
                                     </Button>
                                 </ListItem>
-                                <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                                <ListItem sx={theme.listItem} onClick={() => handleLink('liked-videos')} >
                                     <Button variant="text" sx={theme.button}>
-                                        <BookIcon sx={{fontSize: 'medium'}}></BookIcon>
-                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Blog</Typography>
+                                        <ThumpIcon sx={{fontSize: 'medium'}}></ThumpIcon>
+                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Liked</Typography>
                                     </Button>
                                 </ListItem>
                                 <ListItem sx={theme.listItem}>
-                                    <Button variant="text" sx={theme.button} onClick={() => handleLink('login')} >
-                                        <CallIcon sx={{fontSize: 'medium'}}></CallIcon>
-                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Contact</Typography>
+                                    <Button variant="text" sx={theme.button} onClick={() => handleLink('trending')} >
+                                        <TrendingIcon sx={{fontSize: 'medium'}}></TrendingIcon>
+                                        <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Trending</Typography>
                                     </Button>
                                 </ListItem>
                                 
@@ -194,52 +196,52 @@ const Navbar = () => {
                     
                     <Divider sx={theme.divider}>Navigation</Divider>
                     
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                    <ListItem sx={theme.listItem} onClick={() => handleLink('')} >
                         <Button variant="text" sx={theme.button}>
                             <HomeIcon sx={{fontSize: 'large'}}></HomeIcon>
                             <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Home</Typography>
                         </Button>
                     </ListItem>
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                    <ListItem sx={theme.listItem} onClick={() => handleLink('profile')} >
                         <Button variant="text" sx={theme.button}>
-                            <InfoIcon sx={{fontSize: 'medium'}}></InfoIcon>
-                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>About</Typography>
+                            <ProfileIcon sx={{fontSize: 'medium'}}></ProfileIcon>
+                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Profile</Typography>
                         </Button>
                     </ListItem>
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                    <ListItem sx={theme.listItem} onClick={() => handleLink('courses')} >
                         <Button variant="text" sx={theme.button}>
                             <MovieIcon sx={{fontSize: 'medium'}}></MovieIcon>
                             <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Courses</Typography>
                         </Button>
                     </ListItem>
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+                    <ListItem sx={theme.listItem} onClick={() => handleLink('liked-videos')} >
                         <Button variant="text" sx={theme.button}>
-                            <BookIcon sx={{fontSize: 'medium'}}></BookIcon>
-                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Blog</Typography>
+                            <ThumpIcon sx={{fontSize: 'medium'}}></ThumpIcon>
+                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Liked</Typography>
                         </Button>
                     </ListItem>
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
-                        <Button variant="text" sx={theme.button}>
-                            <CallIcon sx={{fontSize: 'medium'}}></CallIcon>
-                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Contact</Typography>
+                    <ListItem sx={theme.listItem}>
+                        <Button variant="text" sx={theme.button} onClick={() => handleLink('trending')} >
+                            <TrendingIcon sx={{fontSize: 'medium'}}></TrendingIcon>
+                            <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Trending</Typography>
                         </Button>
                     </ListItem>
-                    
+
                     <Divider sx={theme.divider}>Get Started</Divider>
-                    
+                                
                     <ListItem sx={theme.listItem} onClick={() => handleLink('signup')}>
                         <Button variant="text" sx={theme.button}>
                             <PersonIcon sx={{fontSize: 'medium'}}></PersonIcon>
                             <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Sign Up</Typography>
                         </Button>
                     </ListItem>
-                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')} >
+
+                    <ListItem sx={theme.listItem} onClick={() => handleLink('login')}>
                         <Button variant="text" sx={theme.button}>
                             <LoginIcon sx={{fontSize: 'medium'}}></LoginIcon>
                             <Typography sx={{marginLeft: '7px', fontSize: '14px',}}>Log In</Typography>
                         </Button>
                     </ListItem>
-                    
                     
                     <Divider sx={theme.divider}>Policies</Divider>
                     

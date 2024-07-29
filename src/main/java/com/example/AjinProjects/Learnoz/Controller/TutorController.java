@@ -3,6 +3,7 @@ package com.example.AjinProjects.Learnoz.Controller;
 import com.example.AjinProjects.Learnoz.Model.Tutor;
 import com.example.AjinProjects.Learnoz.Service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -21,8 +22,8 @@ public class TutorController {
     }
 
     @PostMapping("/signup")
-    public void newStudent(@RequestBody Tutor tutor) {
-        service.newTutor(tutor);
+    public ResponseEntity<String> newStudent(@RequestBody Tutor tutor) {
+        return service.newTutor(tutor);
     }
 
     @PostMapping("/login")
