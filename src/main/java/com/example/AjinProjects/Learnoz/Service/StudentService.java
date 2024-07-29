@@ -77,3 +77,10 @@ public class StudentService {
         enrolledRepository.removeEnrollment(studentId, courseId);
     }
 }
+
+/*
+    TODO:
+        * Make the void functions a ResponseEntity<>
+        * Add the HTTP error codes
+        * Do the same in other methods
+*/
