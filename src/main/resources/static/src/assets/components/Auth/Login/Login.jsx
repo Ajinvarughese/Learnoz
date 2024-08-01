@@ -27,9 +27,12 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userType, setUserType] = useState('');
 
     const [emailError, setEmailError] = useState(false);
+    const [checkEmail, setCheckEmail] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [userTypeError, setUserTypeError] = useState(false);
 
     const validateForm = (event) => {
         event.preventDefault();
@@ -52,6 +55,10 @@ function Login() {
             setPasswordError(true);
             setted = false;
         }
+        if(userType === '') {
+            setUserTypeError(true);
+            setted = false;
+        }
 
         if(setted) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,7 +76,30 @@ function Login() {
                 }
             }
 
-            console.log(loginData);
+
+            fetch(`http://localhost:8080/api/eLearning/${userType}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Login Success!');
+                } else {
+                    setCheckEmail(true);
+                }
+                setIsLoading(false);
+            })
+            .catch(error => {
+                if (error.message === 'Failed to fetch') {
+                    alert('Server timed out');
+                } else {
+                    console.error('Error:', error);
+                }
+                setIsLoading(false);
+            });
             
         }else {
             setIsLoading(false);
@@ -118,13 +148,33 @@ function Login() {
                                 }
                             }
                             variant="outlined" 
-                            error={(emailError)}
-                            helperText={emailError ? "Enter a valid email or username" : ""}
+                            error={(emailError || checkEmail)}
+                            helperText={emailError ? "Enter a valid email or username" : checkEmail ? "Email or password must be wrong" : ""}
                             onChange={(event) => setEmail(event.target.value)}
                             onInput={() => {
-                                setEmailError(false); 
+                                setEmailError(false);
+                                setCheckEmail(false); 
                             }}
                         />
+
+                        <FormControl fullWidth error={userTypeError}>
+                            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={userType}
+                                onInput={() => {setUserTypeError(false)}}
+                                label="Age"
+                                onChange={(event) => {
+                                    setUserType(event.target.value); 
+                                    setUserTypeError(false)
+                                }}
+                            >
+                                <MenuItem value={'student'}>Student</MenuItem>
+                                <MenuItem value={'tutor'}>Tutor</MenuItem>
+                            </Select>
+                            {userTypeError && <FormHelperText>Select user type</FormHelperText>}
+                        </FormControl>
 
                         <FormControl sx={...styles.pass} variant="outlined" error={passwordError}>
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>

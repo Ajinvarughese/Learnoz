@@ -45,7 +45,7 @@ public class TutorService {
         return repository.findTutorByUsername(username, password);
     }
 
-    public void loginTutor(Tutor tutor) {
+    public ResponseEntity<String> loginTutor(Tutor tutor) {
         String email = tutor.getEmail();
         String username = tutor.getUsername();
         String password = tutor.getPassword();
@@ -53,15 +53,17 @@ public class TutorService {
         if(!username.isEmpty()) {
             Optional<Tutor> tutorUsername = repository.findTutorByUsername(username, password);
             if(tutorUsername.isEmpty()) {
-                throw new IllegalStateException("User not found!");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
             }
+
         }else if(!email.isEmpty()) {
             Optional<Tutor> tutorEmail = repository.findTutorByEmail(email, password);
             if(tutorEmail.isEmpty()) {
-                throw new IllegalStateException("User not found!");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
             }
         }else {
-            throw new IllegalStateException("Bad json request!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad JSON");
         }
+        return ResponseEntity.ok("Login successful");
     }
 }

@@ -27,8 +27,8 @@ public class TutorController {
     }
 
     @PostMapping("/login")
-    public void loginStudent(@RequestBody Tutor tutor) {
-        service.loginTutor(tutor);
+    public ResponseEntity<String> loginStudent(@RequestBody Tutor tutor) {
+        return service.loginTutor(tutor);
     }
 
 }
