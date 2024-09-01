@@ -17,6 +17,9 @@ const Styles = () => {
       height: '100%',
       display: 'block',
     },
+    card: {
+      cursor: 'pointer',
+    },
   };
 }
 
